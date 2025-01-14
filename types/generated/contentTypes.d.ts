@@ -628,6 +628,39 @@ export interface ApiGalleryGallery extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiRequestRequest extends Struct.CollectionTypeSchema {
+  collectionName: 'requests';
+  info: {
+    singularName: 'request';
+    pluralName: 'requests';
+    displayName: 'request';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Schema.Attribute.String;
+    phone: Schema.Attribute.String;
+    email: Schema.Attribute.Email;
+    subject: Schema.Attribute.String;
+    message: Schema.Attribute.Text;
+    acceptTerms: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::request.request'
+    > &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiServicioServicio extends Struct.CollectionTypeSchema {
   collectionName: 'servicios';
   info: {
@@ -1074,6 +1107,7 @@ declare module '@strapi/strapi' {
       'api::comentario.comentario': ApiComentarioComentario;
       'api::evento.evento': ApiEventoEvento;
       'api::gallery.gallery': ApiGalleryGallery;
+      'api::request.request': ApiRequestRequest;
       'api::servicio.servicio': ApiServicioServicio;
       'api::special.special': ApiSpecialSpecial;
       'admin::permission': AdminPermission;
