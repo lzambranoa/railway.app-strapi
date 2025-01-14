@@ -1,0 +1,44 @@
+{
+  "kind": "collectionType",
+  "collectionName": "comentarios",
+  "info": {
+    "singularName": "comentario",
+    "pluralName": "comentarios",
+    "displayName": "comentario",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "autor": {
+      "type": "string"
+    },
+    "mensaje": {
+      "type": "text"
+    },
+    "fechaComentario": {
+      "type": "date"
+    },
+    "estado": {
+      "type": "enumeration",
+      "enum": [
+        "pendiente",
+        "aprobado",
+        "rechazado"
+      ],
+      "default": "pendiente"
+    },
+    "email": {
+      "type": "email"
+    },
+    "web": {
+      "type": "string"
+    },
+    "acceptTerms": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}
