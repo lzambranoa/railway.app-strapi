@@ -15,7 +15,7 @@ export default factories.createCoreController('api::request.request', ({ strapi 
 
       // Envía el correo
       await strapi.plugins['email'].services.email.send({
-        to: 'tu-correo-corporativo@tu-dominio.com',
+        to: 'info@ecopartyproducciones.com',
         subject: 'Nueva solicitud de información',
         text: `Nombre: ${name}\nCorreo: ${email}\nMensaje: ${message}\nSubject: ${subject}\nPhone: ${phone}\nacceptTerms: ${acceptTerms}`,
       });
