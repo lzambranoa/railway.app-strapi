@@ -501,6 +501,7 @@ export interface ApiAliadoAliado extends Struct.CollectionTypeSchema {
     singularName: 'aliado';
     pluralName: 'aliados';
     displayName: 'aliado';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -601,6 +602,7 @@ export interface ApiGalleryGallery extends Struct.CollectionTypeSchema {
     singularName: 'gallery';
     pluralName: 'galleries';
     displayName: 'gallery';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -612,6 +614,7 @@ export interface ApiGalleryGallery extends Struct.CollectionTypeSchema {
       'images' | 'files' | 'videos' | 'audios',
       true
     >;
+    orden: Schema.Attribute.Integer;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
