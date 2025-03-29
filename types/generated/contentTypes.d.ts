@@ -664,6 +664,36 @@ export interface ApiRequestRequest extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiReservaReserva extends Struct.CollectionTypeSchema {
+  collectionName: 'reservas';
+  info: {
+    singularName: 'reserva';
+    pluralName: 'reservas';
+    displayName: 'reserva';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    fecha: Schema.Attribute.Date;
+    evento: Schema.Attribute.String;
+    estado: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::reserva.reserva'
+    > &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiServicioServicio extends Struct.CollectionTypeSchema {
   collectionName: 'servicios';
   info: {
@@ -1111,6 +1141,7 @@ declare module '@strapi/strapi' {
       'api::evento.evento': ApiEventoEvento;
       'api::gallery.gallery': ApiGalleryGallery;
       'api::request.request': ApiRequestRequest;
+      'api::reserva.reserva': ApiReservaReserva;
       'api::servicio.servicio': ApiServicioServicio;
       'api::special.special': ApiSpecialSpecial;
       'admin::permission': AdminPermission;

@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "reservas",
+  "info": {
+    "singularName": "reserva",
+    "pluralName": "reservas",
+    "displayName": "reserva"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "fecha": {
+      "type": "date"
+    },
+    "evento": {
+      "type": "string"
+    },
+    "estado": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}
