@@ -670,6 +670,7 @@ export interface ApiReservaReserva extends Struct.CollectionTypeSchema {
     singularName: 'reserva';
     pluralName: 'reservas';
     displayName: 'reserva';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -677,7 +678,7 @@ export interface ApiReservaReserva extends Struct.CollectionTypeSchema {
   attributes: {
     fecha: Schema.Attribute.Date;
     evento: Schema.Attribute.String;
-    estado: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    estados: Schema.Attribute.Boolean;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;

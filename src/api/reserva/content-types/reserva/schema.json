@@ -4,7 +4,8 @@
   "info": {
     "singularName": "reserva",
     "pluralName": "reservas",
-    "displayName": "reserva"
+    "displayName": "reserva",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -17,9 +18,8 @@
     "evento": {
       "type": "string"
     },
-    "estado": {
-      "type": "boolean",
-      "default": false
+    "estados": {
+      "type": "boolean"
     }
   }
 }
