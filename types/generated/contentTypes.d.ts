@@ -631,6 +631,36 @@ export interface ApiGalleryGallery extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiHeroHero extends Struct.CollectionTypeSchema {
+  collectionName: 'heroes';
+  info: {
+    singularName: 'hero';
+    pluralName: 'heroes';
+    displayName: 'hero';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    image: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    active: Schema.Attribute.Boolean;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::hero.hero'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiRequestRequest extends Struct.CollectionTypeSchema {
   collectionName: 'requests';
   info: {
@@ -1141,6 +1171,7 @@ declare module '@strapi/strapi' {
       'api::comentario.comentario': ApiComentarioComentario;
       'api::evento.evento': ApiEventoEvento;
       'api::gallery.gallery': ApiGalleryGallery;
+      'api::hero.hero': ApiHeroHero;
       'api::request.request': ApiRequestRequest;
       'api::reserva.reserva': ApiReservaReserva;
       'api::servicio.servicio': ApiServicioServicio;
